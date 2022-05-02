@@ -1,23 +1,40 @@
 from menu_item import MenuItem
+from foods import Foods
+from drinks import Drinks
 
-menu_item1 = MenuItem('Orange', 2)
-menu_item2 = MenuItem('Apple', 2)
-menu_item3 = MenuItem('Durian', 5)
-menu_item4 = MenuItem('Grape', 3)
+food1 = Foods('Cookie', 2, 50)
+food2 = Foods('Cake', 2, 100)
+food3 = Foods('Pancake', 5, 250)
+food4 = Foods('Bread', 3, 120)
 
-menu_items = [menu_item1,menu_item2,menu_item3,menu_item4]
+drink1 = Drinks('Coffee', 3, 100)
+drink2 = Drinks('Juice', 4, 200)
+drink3 = Drinks('Milk', 3, 250)
+drink4 = Drinks('Tea', 2, 150)
+
+foods = [food1, food2, food3, food4]
+drinks = [drink1, drink2, drink3, drink4]
 index = 1
 
-for menu_item in menu_items:
-    print(str(index) +'. ' +menu_item.info())
+for food in foods:
+    print(str(index) +'. ' +food.info())
+    index+=1
+print('-------------------------------------------------')
+index = 1    
+for drink in drinks:
+    print(str(index) +'. ' +drink.info())
     index+=1
     
-order = int(input('Input menu number : '))
-selected_menu = menu_items[order-1]
-print('You choose: ' +selected_menu.name)
+order = int(input('Input Food Number : '))
+selected_food = foods[order-1]
 
-diskon = int(input('Total order (10% off for 3 or more order items): '))
+order = int(input('Input Drink Number : '))
+selected_drink = drinks[order-1]
 
-total_price = selected_menu.get_total_price(diskon)
+print('You choose: ' +selected_food.name +' and ' +selected_drink.name)
 
-print('Total price: ' +str(total_price))
+diskon = int(input('How Many Packet do you Want? (10% off for 3 or more order items): '))
+
+total_price = selected_food.get_total_price(diskon) + selected_drink.get_total_price(diskon)
+
+print('Total price: ' +str(total_price) +'$')
